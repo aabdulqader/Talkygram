@@ -27,7 +27,6 @@ class Post(models.Model):
         ordering = ('-created',)
 
 
-    
 
 class Comment(models.Model):
 
@@ -39,8 +38,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.pk)
-
-
 
 
 LIKE_CHOICES = (

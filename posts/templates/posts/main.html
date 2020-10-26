@@ -26,19 +26,25 @@
                                 </button>
                                 &nbsp;{{obj.num_likes}}
                             </form>
-                            
                         </div>
-                    
+                        <form action="" method="POST"class='ui fluid form'>
+                            {% csrf_token %}
+                            <input type="hidden" name="post_id" value={{obj.id}}>
+                            {{ c_form }}
+                            <button type="submit" name="submit_c_form" class="ui primary button mt-5 w-full">Send</button>
+                        </form>
                     </div>
-
                 {% endfor %}
             </div>
             <div class="five wide column">
+                {% if post_added %}
+                    <div class="ui green message">Post Added</div>
+                {% endif %}
                 <form action="" method='POST' class = "ui form" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{form}}
+                    {{p_form}}
                 
-                    <button type = "submit" class="ui button positive">Send Post</button>
+                    <button type = "submit" class="ui button positive" name = "submit_p_form">Send Post</button>
                 </form>
             </div>
         </div>
