@@ -1,13 +1,29 @@
 from django.shortcuts import render, redirect
 from .models import Post, Profile, Like
+from .forms import PostModelForm
+
+
+
+
 
 def post_comment_create_and_list_view(request):
     queryset = Post.objects.all()
     profile = Profile.objects.get(user=request.user)
 
+    p_form = PostModelForm(request.POST or None, request.FILES or None)
+
+
+    if p_form.is_valid():
+        instance = p_form.save(commit=False)
+        instance.author = profile
+        instance.save()
+        p_form = PostModelForm()
+
     context = {
         'queryset':queryset,
         'profile':profile,
+        'form':p_form,
+        
     }
 
     return render (request, 'posts/main.html', context )

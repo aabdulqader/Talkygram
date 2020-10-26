@@ -4,6 +4,7 @@ from profiles.models import Profile
 
 
 
+
 class Post(models.Model):
     content = models.TextField()
     image = models.ImageField(upload_to = 'posts', validators = [FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)

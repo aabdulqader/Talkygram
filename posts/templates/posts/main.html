@@ -34,8 +34,12 @@
                 {% endfor %}
             </div>
             <div class="five wide column">
-                Form
-                {{profile}}
+                <form action="" method='POST' class = "ui form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form}}
+                
+                    <button type = "submit" class="ui button positive">Send Post</button>
+                </form>
             </div>
         </div>
     </div>
