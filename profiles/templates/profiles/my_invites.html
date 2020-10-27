@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}My Invites{% endblock title %}
+{% block title %}Friends Requests{% endblock title %}
 {% block content %}
+    <h1>Friends Requests</h1>
     {% if is_empty %}
-        <h1>No invitations Here</h1>
+        <h1>No Friend Request Received</h1>
     {% endif %}
         {% for obj  in queryset %}
             <div class="ui segment">
@@ -14,7 +15,7 @@
                         <div class="thirteen wide column">
                             <h2>{{obj.user}}</h2>
                             <p>{{obj.bio}}</p>
-                            <a href="">
+                            <a href="{{obj.get_absolute_url}}">
                                 <button class="ui primary button w-big md-5">See Profile</button>
                             </a>
                             <form action="{% url 'profiles:accept_invite' %}" method='POST'>

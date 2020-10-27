@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{{profile.user}}'s Profile{% endblock title %}
+{% block title %}Your Profile{% endblock title %}
 {% block content %}
 
     <div class="ui modal mymodal">
@@ -64,7 +64,7 @@
                                 <td>{{profile.bio}}</td>
                             </tr>
                             <tr>
-                                <td>Number of Friends</td>
+                                <td>Total Friends</td>
                                 <td>{{profile.get_friends_no}}</td>
                             </tr>
                             <tr>
@@ -76,15 +76,15 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Number of Posts</td>
+                                <td>Posts</td>
                                 <td>{{profile.get_Posts_no}}</td>
                             </tr>
                             <tr>
-                                <td>Number of likes given</td>
+                                <td>likes given</td>
                                 <td>{{profile.get_likes_given_no}}</td>
                             </tr>
                             <tr>
-                                <td>Number of likes received</td>
+                                <td>likes received</td>
                                 <td>{{profile.get_likes_received_no}}</td>
                             </tr>
                         </tbody>

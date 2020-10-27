@@ -1,10 +1,27 @@
 {% extends 'base.html' %}
-{% block title %}Invite Friends{% endblock title %}
+{% block title %}Requests{% endblock title %}
 {% block content %}
-    <ul>
-        {% for item  in queryset %}
-            <li>{{item}}</li>
-        {% endfor %}
-    
-    </ul>
+    <h1>Requests You Sent</h1>
+    {% if is_empty %}
+        <h1>No Requests Sent Yet</h1>
+    {% endif %}
+    {% for obj  in queryset %}
+        <div class="ui segment">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="three wide column">
+                        <img src="{{obj.avatar.url}}" alt="" class="ui small circular image">
+                    </div>
+                    <div class="thirteen wide column">
+                        <h2>{{obj.user}}</h2>
+                        <p>{{obj.bio}}</p>
+                        <a href="{{obj.get_absolute_url}}">
+                            <button class="ui primary button w-big md-5">See Profile</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+   
 {% endblock content %}

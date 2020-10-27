@@ -4,10 +4,11 @@ from .models import Post, Profile, Like
 from .forms import PostModelForm, CommentModelForm
 from django.views.generic import UpdateView, DeleteView
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = "posts/confirm_del.html"
     success_url = reverse_lazy('posts:main_post_view')
@@ -22,7 +23,7 @@ class PostDeleteView(DeleteView):
         return obj
     
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostModelForm
     template_name = 'posts/update.html'
@@ -39,7 +40,7 @@ class PostUpdateView(UpdateView):
 
 
 
-
+@login_required
 def post_comment_create_and_list_view(request):
     queryset = Post.objects.all()
     profile = Profile.objects.get(user=request.user)
@@ -81,7 +82,7 @@ def post_comment_create_and_list_view(request):
     
 
 
-
+@login_required
 def like_unlike_post(request):
     user = request.user
     if request.method == "POST":
