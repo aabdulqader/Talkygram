@@ -42,13 +42,13 @@
                             <i class="dropdown icon"></i>
                             <div class="menu">
                                 <a href="{% url 'profiles:all_profiles' %}" class="item">
-                                    All Profiles
+                                    Add Friends
                                 </a>
                                 <a href="{% url 'profiles:invite_profiles' %}" class="item">
-                                    Send Invites
+                                    Requests Sent
                                 </a>
                                 <a href="{% url 'profiles:my_invites' %}" class="item">
-                                    Received Invites
+                                    Friends requests &nbsp; <div class="ui purple horizontal label">{{invites_num}}</div>
                                 </a>
                             </div>
                         </div>
@@ -65,6 +65,7 @@
                     </form>
                     </div>
                     <a href="{% url 'profiles:my_profile' %}" class="item">
+                        <img src={{picture.url}} class="ui avatar image">&nbsp;
                         {{ request.user }}
                     </a>
 
