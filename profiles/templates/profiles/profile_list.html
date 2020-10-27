@@ -22,7 +22,7 @@
                         <br>
 
                         {% if obj.user not in rel_receiver and obj.user not in rel_sender %}
-                            <form action="" method="POST">
+                            <form action="{% url 'profiles:send_invite' %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="profile_pk" value={{obj.pk}}>
                                 <button type="submit" class="ui positive basic button mb-5 w-big"><i class="plus square icon"></i>Add to friends</button>
@@ -34,7 +34,7 @@
                         {% endif %}
 
                         {% if request.user in obj.friends.all %}
-                        <form action="" method="POST">
+                        <form action="{% url 'profiles:remove_friend' %}" method="POST">
                             {% csrf_token %}
                             <input type="hidden" name="profile_pk" value={{obj.pk}}>
                             <button type="submit" class="ui negative basic button mb-5 w-big"><i class="minus square icon"></i>Remove from friends</button>

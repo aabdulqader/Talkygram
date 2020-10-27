@@ -1,11 +1,11 @@
 body {
-    background-color: #dcdde2 !important;
+    background-color: #ffffff !important;
 }
 
 .nav {
     border-radius: 0px ! important;
     padding: 10px 0 10px 0 !important;
-    background-color: #396afc !important;
+    background-color: #0f31c7c2 !important;
 }
 
 .mb-7 {
@@ -14,6 +14,10 @@ body {
 
 .mt-5 {
     margin-top: 5px !important;
+}
+
+.w-big {
+    width: 200px !important; 
 }
 
 
