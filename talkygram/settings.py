@@ -38,10 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'posts',
     'profiles',
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
 
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 
@@ -70,6 +80,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'profiles.context_processors.profile_pic',
                 'profiles.context_processors.invitations_received_no',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -136,4 +147,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-LOGIN_URL = "/admin/"
+# LOGIN_URL = "/admin/".
+LOGIN_REDIRECT_URL = '/posts/'
+
+SITE_ID = 1
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_UNIQUE = True
+
+
+
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+
+#for real/live email.
+# ACCOUNT_EMAIL_VERIFICATION = True
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
